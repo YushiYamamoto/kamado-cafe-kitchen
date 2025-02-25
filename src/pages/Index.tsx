@@ -1,4 +1,3 @@
-
 import { useRef, useEffect } from "react";
 import { ChevronsDown, MapPin, Clock, Phone } from "lucide-react";
 
@@ -64,9 +63,66 @@ const Index = () => {
         </p>
       </section>
 
-      {/* Featured Dishes */}
+      {/* お知らせセクション */}
       <section
         ref={(el) => (sectionsRef.current[1] = el)}
+        className="py-24 bg-gray-50 opacity-0"
+      >
+        <div className="px-6 md:px-12 max-w-4xl mx-auto">
+          <span className="block text-kamado-clay font-medium mb-2">News</span>
+          <h2 className="font-serif text-3xl md:text-4xl mb-12">お知らせ</h2>
+          <div className="space-y-6">
+            {[
+              {
+                id: 1,
+                title: "年末年始の営業時間について",
+                date: "2024-03-15",
+                category: "お知らせ"
+              },
+              {
+                id: 2,
+                title: "春の新メニュー登場",
+                date: "2024-03-10",
+                category: "メニュー"
+              },
+              {
+                id: 3,
+                title: "料理教室開催のご案内",
+                date: "2024-03-05",
+                category: "イベント"
+              }
+            ].slice(0, 3).map((news) => (
+              <a
+                key={news.id}
+                href={`/news/${news.id}`}
+                className="block bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow group"
+              >
+                <div className="flex items-center gap-4 mb-2">
+                  <span className="inline-block px-3 py-1 text-sm bg-kamado-clay text-white rounded-full">
+                    {news.category}
+                  </span>
+                  <time className="text-gray-600 text-sm">{news.date}</time>
+                </div>
+                <h3 className="font-serif text-lg group-hover:text-kamado-clay transition-colors">
+                  {news.title}
+                </h3>
+              </a>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <a
+              href="/news"
+              className="inline-block px-6 py-2 border border-kamado-clay text-kamado-clay hover:bg-kamado-clay hover:text-white transition-colors rounded-lg"
+            >
+              お知らせ一覧へ
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Dishes */}
+      <section
+        ref={(el) => (sectionsRef.current[2] = el)}
         className="py-24 bg-white opacity-0"
       >
         <div className="px-6 md:px-12 max-w-6xl mx-auto">
@@ -113,7 +169,7 @@ const Index = () => {
 
       {/* Information Section */}
       <section
-        ref={(el) => (sectionsRef.current[2] = el)}
+        ref={(el) => (sectionsRef.current[3] = el)}
         className="py-24 px-6 md:px-12 max-w-4xl mx-auto opacity-0"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
